@@ -12,7 +12,7 @@ for (let i = 0; i < size; i++){
         const grid_div = document.createElement('div'); 
         grid_div.setAttribute(
             'style',
-            'border: 4px red solid; width: 10px; height: 10px'
+            'border: 4px red solid;'
         )
         grid_div.textContent = "1"; 
         grid_container.appendChild(grid_div); 
