@@ -1,20 +1,47 @@
 const grid_container = document.querySelector('.grid-container'); 
-let size = 0;
-size = 16;  
+const button_container = document.querySelector('.button-container'); 
+const confirm_button = document.querySelector('.size-container button');
+
+let size; 
 let auto_str = ' auto'; 
+
+
+confirm_button.addEventListener('click', () => {
+    size = document.getElementById('size').value;
+    size = Number(size);  
+    grid_container.style.gridTemplateColumns = `${auto_str.repeat(size)}`;
+    for (let i = 0; i < size; i++){
+        for(let j = 0; j < size; j++){
+            const grid_div = document.createElement('div'); 
+            grid_div.addEventListener('mouseenter', () => {
+                // put if statement here
+                    grid_div.setAttribute(
+                        'style',
+                        'background-color: black;'
+                    )
+            })
+            grid_container.appendChild(grid_div); 
+        }
+    }  
+})
+
+/*
 grid_container.style.gridTemplateColumns = `${auto_str.repeat(size)}`;
-
-
-
-
 for (let i = 0; i < size; i++){
     for(let j = 0; j < size; j++){
         const grid_div = document.createElement('div'); 
+        grid_div.addEventListener('mouseenter', () => {
+            // put if statement here
+                grid_div.setAttribute(
+                    'style',
+                    'background-color: black;'
+                )
+        })
         grid_div.setAttribute(
             'style',
-            'border: 4px red solid;'
+            'border: 4px solid red'
         )
-        grid_div.textContent = "1"; 
         grid_container.appendChild(grid_div); 
     }
 }
+*/
