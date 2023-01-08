@@ -4,7 +4,10 @@ const confirm_button = document.querySelector('.size-container button');
 const size_output = document.querySelector('.size-container input'); 
 const clear_button = document.querySelector('#clear-button'); 
 const random_color_button = document.querySelector('#random-color-button'); 
+const grayscale_button = document.querySelector('#grayscale-button'); 
 
+let div_background_color; 
+let window_computed; 
 let RGB_first;
 let RGB_second; 
 let RGB_third;  
@@ -43,8 +46,18 @@ function run() {
                     grid_div.setAttribute(
                     'style',
                     'background-color: black'
-                )
-            }})
+                    )
+                }
+                else if (option == "grayscale-button"){
+                    window_computed = window.getComputedStyle(grid_div);
+                    div_background_color = window_computed.getPropertyValue('background-color'); 
+                    console.log(div_background_color); 
+                    grid_div.setAttribute(
+                        'style',
+                        'background-color: red'
+                    )
+                }
+            })
             grid_container.appendChild(grid_div); 
         }
     }
@@ -57,5 +70,6 @@ function clear() {
 random_color_button.addEventListener('click', run); 
 confirm_button.addEventListener('click', run);
 clear_button.addEventListener('click', clear); 
+grayscale_button.addEventListener('click', run)
 
 
