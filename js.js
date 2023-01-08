@@ -4,6 +4,7 @@ const confirm_button = document.querySelector('.size-container button');
 const size_output = document.querySelector('.size-container input'); 
 const clear_button = document.querySelector('#clear-button'); 
 const random_color_button = document.querySelector('#random-color-button'); 
+
 let RGB_first;
 let RGB_second; 
 let RGB_third;  
@@ -12,7 +13,7 @@ let size;
 let auto_str = ' auto'; 
 
 function run() {
-    option = this.id; 
+    option = String(this.id); 
     grid_container.innerHTML = ''; 
     size = document.getElementById('size').value;
     if (size > 100){
@@ -25,24 +26,25 @@ function run() {
     for (let i = 0; i < size; i++){
         for(let j = 0; j < size; j++){
             const grid_div = document.createElement('div'); 
-            grid_div.addEventListener('mouseenter', (option) => {
+            grid_div.addEventListener('mouseenter', () => {
                 // put if statement here
                 console.log(`${option}`)
                 if (option == "random-color-button"){
-                    RGB_first = 255
-                    RGB_second = 0
-                    RGB_third = 0
-
+                    RGB_first = Math.floor(Math.random() * 256)
+                    RGB_second = Math.floor(Math.random() * 256)
+                    RGB_third = Math.floor(Math.random() * 256)
+                    
                     grid_div.setAttribute(
                         'style',
-                        'background-color: red'
+                        `background-color: rgb(${RGB_first}, ${RGB_second}, ${RGB_third})`
                     )
                 }
-                grid_div.setAttribute(
+                else if (option == "confirm-button"){
+                    grid_div.setAttribute(
                     'style',
                     'background-color: black'
                 )
-            })
+            }})
             grid_container.appendChild(grid_div); 
         }
     }
