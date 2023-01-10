@@ -6,6 +6,7 @@ const clear_button = document.querySelector('#clear-button');
 const random_color_button = document.querySelector('#random-color-button'); 
 const grayscale_button = document.querySelector('#grayscale-button'); 
 
+let opacity = 0; 
 let div_background_color; 
 let window_computed; 
 let RGB_first;
@@ -51,10 +52,14 @@ function run() {
                 else if (option == "grayscale-button"){
                     window_computed = window.getComputedStyle(grid_div);
                     div_background_color = window_computed.getPropertyValue('background-color'); 
+                    opacity += 0.1; 
+                    console.log(opacity); 
+                    div_background_color = div_background_color.slice(0, div_background_color.length - 4)
+                    div_background_color = `${div_background_color}, ${opacity}`; 
                     console.log(div_background_color); 
                     grid_div.setAttribute(
                         'style',
-                        'background-color: red'
+                        `background-color: ${div_background_color};`
                     )
                 }
             })
