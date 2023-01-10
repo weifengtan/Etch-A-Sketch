@@ -6,6 +6,7 @@ const clear_button = document.querySelector('#clear-button');
 const random_color_button = document.querySelector('#random-color-button'); 
 const grayscale_button = document.querySelector('#grayscale-button'); 
 
+let background_opacity_number = 0; 
 let opacity = 0; 
 let div_background_color; 
 let window_computed; 
@@ -52,10 +53,20 @@ function run() {
                 else if (option == "grayscale-button"){
                     window_computed = window.getComputedStyle(grid_div);
                     div_background_color = window_computed.getPropertyValue('background-color'); 
-                    opacity += 0.1; 
                     console.log(opacity); 
+                    background_opacity_number = div_background_color.slice(div_background_color.length - 5, div_background_color.length-1)
+                    background_opacity_number = parseFloat(background_opacity_number)
+                    console.log(`this is background opacity number`); 
+                    console.log(background_opacity_number)
+                    opacity = background_opacity_number + 0.1; 
                     div_background_color = div_background_color.slice(0, div_background_color.length - 4)
-                    div_background_color = `${div_background_color}, ${opacity}`; 
+                    console.log ("this is the char at lengh - 2")
+                    console.log(div_background_color)
+                    console.log(div_background_color.charAt(div_background_color.length-2))
+                    if (div_background_color.charAt(div_background_color.length-2) == ','){
+                        div_background_color =  div_background_color.slice(0, div_background_color.length-2) 
+                    }
+                    div_background_color = `${div_background_color},${opacity})`; 
                     console.log(div_background_color); 
                     grid_div.setAttribute(
                         'style',
