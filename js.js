@@ -17,6 +17,7 @@ let option;
 let size; 
 let auto_str = ' auto'; 
 
+// Main function 
 function run() {
     option = String(this.id); 
     grid_container.innerHTML = ''; 
@@ -83,6 +84,8 @@ function clear() {
     grid_container.innerHTML = ''; 
 }
 
+
+// Adding buttons 
 random_color_button.addEventListener('click', run); 
 confirm_button.addEventListener('click', run);
 clear_button.addEventListener('click', clear); 
